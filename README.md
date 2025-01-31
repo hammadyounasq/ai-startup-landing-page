@@ -24,11 +24,15 @@ cd ai-startup-landing-page
 
 ```sh
 npm install
+npm install
+npm install
 ```
 
 3. **Start the development server**:
 
 ```sh
+npm run dev
+npm run dev
 npm run dev
 ```
 
