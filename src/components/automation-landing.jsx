@@ -5,7 +5,7 @@ import check from "../assets/chectblue.svg";
 
 export default function AutomationLanding() {
   return (
-    <div className="relative overflow-hidden  ">
+    <div className="relative overflow-hidden min-h-screen ">
       <div className="absolute z-[0] w-full h-[10rem]  top-[10%] left-[0%]  bottom-20 blur-[3rem]  bg-blue-300 bg-opacity-50  " />
 
       <div className="relative max-w-6xl mx-auto px-4  pt-20 pb-32">
