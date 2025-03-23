@@ -5,100 +5,368 @@ import search from "../assets/search.png";
 import topice from "../assets/topice.png";
 import Z from "../assets/Z.png";
 import avater from "../assets/avater.png";
+// export default function FeaturesGrid() {
+//   return (
+//     <div className="container mx-auto px-4 py-12 space-y-12">
+//       {/* First row - 2 columns */}
+//       <div className="grid md:grid-cols-2 gap-6">
+//         <div className="overflow-hidden  border border-[#D3D5D8] rounded-2xl bg-gradient-to-b  from-blue-50 to-blue-100">
+//           <div className="p-7">
+//             <div className="text-2xl font-bold ">Fin</div>
+//             <div className="text-sm max-w-[25rem] font-normal">
+//               Our AI-powered bot automatically and accurately answers support
+//               questions with zero training required.
+//             </div>
+//           </div>
+//           <div className="p-0">
+//             <img src={botchat} className="bg-muted w-full" />
+//           </div>
+//         </div>
+
+//         <div className="overflow-hidden border border-[#D3D5D8] rounded-2xl  bg-gradient-to-b  from-[#F3F9FF] to-[#C4E0FD]">
+//           <div className="p-7">
+//             <div className="text-2xl font-bold ">Workflows</div>
+//             <div className="text-sm max-w-[25rem] font-normal">
+//               Easily build powerful no-code automations with bots, triggers,
+//               conditions, and rules—all in one place.
+//             </div>
+//           </div>
+//           <div className="p-0">
+//             <img src={snoozo} className="bg-muted  w-full" />
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Second row - 3 columns */}
+//       <div className="grid md:grid-cols-3 gap-6">
+//         <div className="overflow-hidden border border-[#D3D5D8] rounded-2xl  bg-gradient-to-b  from-[#F3F9FF] to-[#C4E0FD]">
+//           <div className="p-7">
+//             <div className="text-2xl font-bold">AI-powered Inbox</div>
+//             <div className="text-sm max-w-[25rem] font-normal">
+//               Instantly generate replies, recap conversations for other agents,
+//               and create new help articles.
+//             </div>
+//           </div>
+//           <div className="p-0">
+//             <img src={AI} className="bg-muted w-full" />
+//           </div>
+//         </div>
+
+//         <div className="overflow-hidden  border border-[#D3D5D8] rounded-2xl  bg-gradient-to-b  from-[#F3F9FF] to-[#C4E0FD]">
+//           <div className="p-7">
+//             <div className="text-2xl font-bold ">Article suggestions</div>
+//             <div className="text-sm max-w-[25rem] font-normal">
+//               Immediately recommend helpful content with machine
+//               learning—directly in your product.
+//             </div>
+//           </div>
+//           <div className="p-0">
+//             <img src={search} className="bg-muted  w-full" />
+//           </div>
+//         </div>
+
+//         <div className="overflow-hidde  border border-[#D3D5D8] rounded-2xl bg-gradient-to-b  from-[#F3F9FF] to-[#C4E0FD]">
+//           <div className="p-7 ">
+//             <div className="text-2xl font-bold ">Conversation topics</div>
+//             <div className="text-sm max-w-[25rem] font-normal">
+//               Better understand your customers with AI-powered analysis of
+//               support conversations.
+//             </div>
+//           </div>
+//           <div className="pt-10">
+//             <img src={topice} className="bg-muted aspect-video w-full" />
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Testimonial section */}
+//       <div className="pt-10 text-center max-w-xl mx-auto space-y-8">
+//         <img
+//           src={Z}
+//           alt="Zilch logo"
+//           width={60}
+//           height={40}
+//           className="mx-auto"
+//         />
+//         <blockquote className="text-xl font-normal">
+//           "Our bot deflection rate with our previous customer service solution
+//           was 5–10%. With Intercom, we achieved
+//           <span className="font-bold">
+//             {" "}
+//             65% bot deflection within just one week{" "}
+//           </span>
+//           of going live."
+//         </blockquote>
+//         <div className="flex items-center justify-center ">
+//           <img src={avater} width={60} height={40} />
+
+//           <div className="pl-4 text-left">
+//             <div className="font-semibold">Stuart Sykes</div>
+//             <div className="text-sm text-muted-foreground">
+//               VP of Service Operations, Zilch
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+("use client");
+
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+
 export default function FeaturesGrid() {
+  // Images would normally be imported, but we'll use the paths as provided
+  const images = {
+    botchat: botchat,
+    snoozo: snoozo,
+    AI: AI,
+    search: search,
+    topice: topice,
+    Z: Z,
+    avater: avater,
+  };
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  };
+
+  const testimonialVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  // Refs for scroll-triggered animations
+  const row1Ref = useRef(null);
+  const row2Ref = useRef(null);
+  const testimonialRef = useRef(null);
+
+  const row1InView = useInView(row1Ref, { once: true, amount: 0.2 });
+  const row2InView = useInView(row2Ref, { once: true, amount: 0.2 });
+  const testimonialInView = useInView(testimonialRef, {
+    once: true,
+    amount: 0.3,
+  });
+
   return (
     <div className="container mx-auto px-4 py-12 space-y-12">
       {/* First row - 2 columns */}
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="overflow-hidden  border border-[#D3D5D8] rounded-2xl bg-gradient-to-b  from-blue-50 to-blue-100">
+      <motion.div
+        ref={row1Ref}
+        className="grid md:grid-cols-2 gap-6"
+        variants={containerVariants}
+        initial="hidden"
+        animate={row1InView ? "visible" : "hidden"}
+      >
+        <motion.div
+          className="overflow-hidden border border-[#D3D5D8] rounded-2xl bg-gradient-to-b from-blue-50 to-blue-100 hover:shadow-lg transition-shadow duration-300"
+          variants={itemVariants}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+        >
           <div className="p-7">
-            <div className="text-2xl font-bold ">Fin</div>
+            <div className="text-2xl font-bold">Fin</div>
             <div className="text-sm max-w-[25rem] font-normal">
               Our AI-powered bot automatically and accurately answers support
               questions with zero training required.
             </div>
           </div>
           <div className="p-0">
-            <img src={botchat} className="bg-muted w-full" />
+            <motion.img
+              src={images.botchat}
+              className="bg-muted w-full"
+              alt="Bot chat interface"
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+            />
           </div>
-        </div>
+        </motion.div>
 
-        <div className="overflow-hidden border border-[#D3D5D8] rounded-2xl  bg-gradient-to-b  from-[#F3F9FF] to-[#C4E0FD]">
+        <motion.div
+          className="overflow-hidden border border-[#D3D5D8] rounded-2xl bg-gradient-to-b from-[#F3F9FF] to-[#C4E0FD] hover:shadow-lg transition-shadow duration-300"
+          variants={itemVariants}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+        >
           <div className="p-7">
-            <div className="text-2xl font-bold ">Workflows</div>
+            <div className="text-2xl font-bold">Workflows</div>
             <div className="text-sm max-w-[25rem] font-normal">
               Easily build powerful no-code automations with bots, triggers,
               conditions, and rules—all in one place.
             </div>
           </div>
           <div className="p-0">
-            <img src={snoozo} className="bg-muted  w-full" />
+            <motion.img
+              src={images.snoozo}
+              className="bg-muted w-full"
+              alt="Workflow interface"
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+            />
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Second row - 3 columns */}
-      <div className="grid md:grid-cols-3 gap-6">
-        <div className="overflow-hidden border border-[#D3D5D8] rounded-2xl  bg-gradient-to-b  from-[#F3F9FF] to-[#C4E0FD]">
+      <motion.div
+        ref={row2Ref}
+        className="grid md:grid-cols-3 gap-6"
+        variants={containerVariants}
+        initial="hidden"
+        animate={row2InView ? "visible" : "hidden"}
+      >
+        <motion.div
+          className="overflow-hidden border border-[#D3D5D8] rounded-2xl bg-gradient-to-b from-[#F3F9FF] to-[#C4E0FD] hover:shadow-lg transition-shadow duration-300"
+          variants={itemVariants}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+        >
           <div className="p-7">
-            <div className="text-2xl">AI-powered Inbox</div>
+            <div className="text-2xl font-bold">AI-powered Inbox</div>
             <div className="text-sm max-w-[25rem] font-normal">
               Instantly generate replies, recap conversations for other agents,
               and create new help articles.
             </div>
           </div>
           <div className="p-0">
-            <img src={AI} className="bg-muted w-full" />
+            <motion.img
+              src={images.AI}
+              className="bg-muted w-full"
+              alt="AI-powered inbox"
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+            />
           </div>
-        </div>
+        </motion.div>
 
-        <div className="overflow-hidden  border border-[#D3D5D8] rounded-2xl  bg-gradient-to-b  from-[#F3F9FF] to-[#C4E0FD]">
+        <motion.div
+          className="overflow-hidden border border-[#D3D5D8] rounded-2xl bg-gradient-to-b from-[#F3F9FF] to-[#C4E0FD] hover:shadow-lg transition-shadow duration-300"
+          variants={itemVariants}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+        >
           <div className="p-7">
-            <div className="text-2xl font-bold ">Article suggestions</div>
+            <div className="text-2xl font-bold">Article suggestions</div>
             <div className="text-sm max-w-[25rem] font-normal">
               Immediately recommend helpful content with machine
               learning—directly in your product.
             </div>
           </div>
           <div className="p-0">
-            <img src={search} className="bg-muted  w-full" />
+            <motion.img
+              src={images.search}
+              className="bg-muted w-full"
+              alt="Article suggestions"
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+            />
           </div>
-        </div>
+        </motion.div>
 
-        <div className="overflow-hidde  border border-[#D3D5D8] rounded-2xl bg-gradient-to-b  from-[#F3F9FF] to-[#C4E0FD]">
-          <div className="p-7 ">
-            <div className="text-2xl font-bold ">Conversation topics</div>
+        <motion.div
+          className="overflow-hidden border border-[#D3D5D8] rounded-2xl bg-gradient-to-b from-[#F3F9FF] to-[#C4E0FD] hover:shadow-lg transition-shadow duration-300"
+          variants={itemVariants}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+        >
+          <div className="p-7">
+            <div className="text-2xl font-bold">Conversation topics</div>
             <div className="text-sm max-w-[25rem] font-normal">
               Better understand your customers with AI-powered analysis of
               support conversations.
             </div>
           </div>
           <div className="pt-10">
-            <img src={topice} className="bg-muted aspect-video w-full" />
+            <motion.img
+              src={images.topice}
+              className="bg-muted aspect-video w-full"
+              alt="Conversation topics"
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+            />
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Testimonial section */}
-      <div className="pt-10 text-center max-w-xl mx-auto space-y-8">
-        <img
-          src={Z}
+      <motion.div
+        ref={testimonialRef}
+        className="pt-10 text-center max-w-xl mx-auto space-y-8"
+        variants={testimonialVariants}
+        initial="hidden"
+        animate={testimonialInView ? "visible" : "hidden"}
+      >
+        <motion.img
+          src={images.Z}
           alt="Zilch logo"
           width={60}
           height={40}
           className="mx-auto"
+          whileHover={{ rotate: 5, scale: 1.1 }}
+          transition={{ duration: 0.3 }}
         />
-        <blockquote className="text-xl font-normal">
+        <motion.blockquote
+          className="text-xl font-normal"
+          initial={{ opacity: 0 }}
+          animate={testimonialInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+        >
           "Our bot deflection rate with our previous customer service solution
           was 5–10%. With Intercom, we achieved
-          <span className="font-bold">
+          <motion.span
+            className="font-bold"
+            initial={{ color: "#000" }}
+            animate={
+              testimonialInView ? { color: "#3B82F6" } : { color: "#000" }
+            }
+            transition={{ delay: 0.8, duration: 0.5 }}
+          >
             {" "}
             65% bot deflection within just one week{" "}
-          </span>
+          </motion.span>
           of going live."
-        </blockquote>
-        <div className="flex items-center justify-center ">
-          <img src={avater} width={60} height={40} />
+        </motion.blockquote>
+        <motion.div
+          className="flex items-center justify-center"
+          initial={{ x: -20, opacity: 0 }}
+          animate={
+            testimonialInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }
+          }
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
+          <motion.img
+            src={images.avater}
+            width={60}
+            height={40}
+            alt="Stuart Sykes"
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.2 }}
+          />
 
           <div className="pl-4 text-left">
             <div className="font-semibold">Stuart Sykes</div>
@@ -106,99 +374,8 @@ export default function FeaturesGrid() {
               VP of Service Operations, Zilch
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
-// export default function InboxLanding() {
-//   return (
-//     <div className="max-w-6xl mx-auto px-4 py-12">
-//       {/* Hero Section */}
-//       <div className="text-center mb-16">
-//         <div className="text-blue-600 font-medium mb-4">INBOX</div>
-//         <h1 className="text-4xl md:text-5xl font-bold mb-4 max-w-3xl mx-auto">
-//           Maximize team productivity with the world's fastest shared Inbox
-//         </h1>
-//         <p className="text-gray-600 max-w-2xl mx-auto mb-4">
-//           Our AI-enhanced Inbox is lightning fast, easy-to-use, and optimized for efficiency—with everything a modern
-//           support team needs.
-//         </p>
-//         <a href="#" className="text-blue-600 hover:underline">
-//           Learn more about the inbox →
-//         </a>
-//       </div>
-
-//       {/* Main Image Placeholder */}
-//       <div className="w-full aspect-video bg-gray-200 rounded-lg mb-16"></div>
-
-//       {/* Features Grid */}
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-//         {/* Ticketing */}
-//         <div className="p-6 bg-white rounded-lg border">
-//           <h3 className="font-semibold text-lg mb-2">Ticketing</h3>
-//           <p className="text-gray-600">
-//             Every email and chat message is automatically ticketed, giving your team complete visibility in one
-//             organized view.
-//           </p>
-//         </div>
-
-//         {/* Configurable */}
-//         <div className="p-6 bg-white rounded-lg border">
-//           <h3 className="font-semibold text-lg mb-2">Configurable</h3>
-//           <p className="text-gray-600">
-//             Choose features that fit your needs, take control with custom views, and more.
-//           </p>
-//         </div>
-
-//         {/* Omnichannel */}
-//         <div className="p-6 bg-white rounded-lg border">
-//           <h3 className="font-semibold text-lg mb-2">Omnichannel</h3>
-//           <p className="text-gray-600">See all your support conversations in one place.</p>
-//           <div className="flex gap-2 mt-4">
-//             <div className="w-8 h-8 bg-gray-100 rounded-full"></div>
-//             <div className="w-8 h-8 bg-gray-100 rounded-full"></div>
-//             <div className="w-8 h-8 bg-gray-100 rounded-full"></div>
-//           </div>
-//         </div>
-
-//         {/* Multiplayer */}
-//         <div className="p-6 bg-white rounded-lg border">
-//           <h3 className="font-semibold text-lg mb-2">Multiplayer</h3>
-//           <p className="text-gray-600">
-//             Work together in real-time with teammates to handle complex requests and avoid duplicate responses.
-//           </p>
-//         </div>
-
-//         {/* Lightning fast */}
-//         <div className="p-6 bg-white rounded-lg border">
-//           <h3 className="font-semibold text-lg mb-2">Lightning fast</h3>
-//           <p className="text-gray-600">Our AI-powered Inbox responds instantly, and helps you work faster than ever.</p>
-//         </div>
-
-//         {/* Team management */}
-//         <div className="p-6 bg-white rounded-lg border">
-//           <h3 className="font-semibold text-lg mb-2">Team management</h3>
-//           <p className="text-gray-600">
-//             Add your team members, assign roles, and manage permissions to keep everything running smoothly.
-//           </p>
-//         </div>
-//       </div>
-
-//       {/* Testimonial */}
-//       <div className="max-w-2xl mx-auto text-center">
-//         <p className="text-xl font-medium mb-6">
-//           "The thing I noticed most about Inbox is the speed. In a test, we saw a 15% increase in the number of
-//           conversations handled."
-//         </p>
-//         <div className="flex items-center justify-center gap-4">
-//           <div className="w-12 h-12 bg-gray-200 rounded-full"></div>
-//           <div className="text-left">
-//             <div className="font-semibold">Pete Brown</div>
-//             <div className="text-gray-600 text-sm">Director of Strategy and Operations</div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }

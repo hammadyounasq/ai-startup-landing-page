@@ -8,6 +8,9 @@ This project is a professional AI startup landing page built using React and Tai
 - **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
 - **Vite**: A fast build tool and development server with Hot Module Replacement (HMR).
 - **ESLint**: A tool for identifying and fixing linting issues in your code.
+- **Prettier**: A code formatter for maintaining consistent code style.
+- **TypeScript**: A statically typed programming language for building robust applications.
+- **React Router**: A popular library for client-side routing in React applications.
 
 ## Getting Started
 

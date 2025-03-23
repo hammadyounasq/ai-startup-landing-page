@@ -1,4 +1,4 @@
-import { NavBar } from "./components/nav-bar";
+import Navbar from "./components/nav-bar";
 import { HeroSection } from "./components/hero-section";
 import AutomationLanding from "./components/automation-landing";
 import FeaturesGrid from "./components/features-grid";
@@ -8,11 +8,13 @@ import ProactiveLayoutGrid from "./components/proactiveLayoutGrid";
 import Messenger from "./components/messenger";
 import Layoutgridmesenger from "./components/layout_grid_mesenger";
 import Platform from "./components/Platform";
+import LayoutgridPlatform from "./components/LayoutgridPlatform";
+import Footer from "./components/footer";
 
 function App() {
   return (
     <>
-      <NavBar />
+      <Navbar />
       <HeroSection />
       <AutomationLanding />
       <FeaturesGrid />
@@ -22,6 +24,8 @@ function App() {
       <Messenger />
       <Layoutgridmesenger />
       <Platform />
+      <LayoutgridPlatform />
+      <Footer />
     </>
   );
 }
