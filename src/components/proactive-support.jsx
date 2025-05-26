@@ -176,7 +176,7 @@ const AnimatedProactiveSupport = () => {
           variants={staggerContainer}
         >
           <motion.span
-            className="inline-block bg-[#FBD482] text-[#423200] px-4 py-1.5 rounded-full text-sm font-medium"
+            className="inline-block bg-gradient-to-r from-[#FFEFD4] via-[#FDE2AA] to-[#FBD482] text-[#423200] px-8 py-2.5 rounded-[2rem] text-[1rem] font-medium tracking-wide"
             variants={scaleIn}
             whileHover={{
               scale: 1.05,
@@ -187,14 +187,14 @@ const AnimatedProactiveSupport = () => {
           </motion.span>
 
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 max-w-3xl mx-auto"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-normal text-gray-900 max-w-4xl mx-auto"
             variants={fadeInUp}
           >
             Get ahead of known issues and slash support volume
           </motion.h1>
 
           <motion.p
-            className="text-gray-600 text-lg max-w-2xl mx-auto"
+            className="text-gray-600 text-lg max-w-3xl mx-auto"
             variants={fadeInUp}
           >
             Reduce support volumes and increase customer satisfaction in minutes
@@ -206,7 +206,7 @@ const AnimatedProactiveSupport = () => {
               variant="link"
               className="text-blue-600 hover:text-blue-700 group"
             >
-              Learn more about automation
+              Learn more about Proactive Support
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
@@ -215,7 +215,7 @@ const AnimatedProactiveSupport = () => {
         {/* Main image with simple fade-in animation */}
         <motion.div
           ref={imageRef}
-          className="relative w-full max-w-7xl mb-[5rem]"
+          className=" relative w-full max-w-7xl mb-[5rem]"
           initial={{ opacity: 0 }}
           animate={imageInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{

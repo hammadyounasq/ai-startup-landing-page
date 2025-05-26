@@ -400,7 +400,7 @@ export default function Navbar() {
               <div key={index} className="relative">
                 {item.hasDropdown ? (
                   <motion.button
-                    className="text-gray-700 hover:text-gray-900 flex items-center space-x-1 py-2"
+                    className="text-black hover:text-gray-900 flex items-center space-x-1 py-2"
                     onClick={() => toggleDropdown(item.name)}
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -418,7 +418,7 @@ export default function Navbar() {
                 ) : (
                   <motion.a
                     href={item.href}
-                    className="text-gray-700 hover:text-gray-900 py-2 block"
+                    className="text-black hover:text-gray-900 py-2 block"
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
@@ -464,7 +464,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             <motion.a
               href="#"
-              className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
+              className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-[#0057FF] transition-colors duration-300  "
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -486,7 +486,7 @@ export default function Navbar() {
             </motion.a>
             <motion.a
               href="#"
-              className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-300"
+              className="inline-flex items-center justify-center px-4 py-2 border border-black text-sm font-medium rounded-full text-black bg-white hover:bg-gray-50 transition-colors duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

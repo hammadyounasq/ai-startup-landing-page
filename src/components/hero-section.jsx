@@ -202,12 +202,12 @@ export function HeroSection() {
         variants={containerVariants}
       >
         <motion.h1
-          className="max-w-4xl text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-6"
+          className="max-w-[65rem] text-[3.5rem] sm:text-[4rem] md:text-[5rem] lg:text-[5rem] font-medium tracking-normal text-white mb-8"
           variants={itemVariants}
         >
           The{" "}
           <motion.span
-            className="text-[#E6B45E]"
+            className="bg-gradient-to-r from-[#F5D58D] to-[#E5B180] text-transparent bg-clip-text"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{
               opacity: 1,
@@ -234,31 +234,52 @@ export function HeroSection() {
         </motion.p>
 
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 mb-16"
+          className="flex flex-col sm:flex-row gap-6 mb-16"
           variants={containerVariants}
         >
           <motion.div variants={buttonVariants} whileHover="hover">
-            <Button
-              size="lg"
-              className="bg-[#0052FF] hover:bg-[#0040CC] text-white w-full sm:w-auto"
-            >
+            <div className="bg-[#0052FF] hover:bg-[#0040CC] text-white w-full sm:w-auto rounded-full px-6 py-3 text-base font-medium flex items-center cursor-pointer transition-colors duration-200">
               Start free trial
-            </Button>
+              <svg
+                className="w-4 h-4 ml-2"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
           </motion.div>
 
           <motion.div variants={buttonVariants} whileHover="hover">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-gray-700 text-white hover:bg-gray-800 w-full sm:w-auto"
-            >
+            <div className="border border-white text-white hover:bg-gray-800/30 w-full sm:w-auto rounded-full px-6 py-3 text-base font-medium flex items-center cursor-pointer transition-colors duration-200">
               View demo
-            </Button>
+              <svg
+                className="w-4 h-4 ml-2"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
           </motion.div>
         </motion.div>
 
         <motion.div
-          className="relative w-full max-w-5xl"
+          className="relative w-full max-w-7xl"
           variants={imageVariants}
         >
           <motion.img
@@ -266,7 +287,7 @@ export function HeroSection() {
             alt="Intercom Dashboard"
             width={1200}
             height={800}
-            className="rounded-lg border border-gray-800 shadow-2xl w-full"
+            className="shadow-2xl w-full"
             initial={{ filter: "blur(10px)" }}
             animate={{
               filter: "blur(0px)",
@@ -280,7 +301,7 @@ export function HeroSection() {
           />
 
           <motion.div
-            className="absolute -inset-0.5 rounded-lg bg-gradient-to-r from-[#0052FF]/20 to-[#E6B45E]/20 opacity-0"
+            className="absolute -inset-0.5 rounded-lg bopacity-0"
             animate={{
               opacity: [0, 0.5, 0],
               transition: {
@@ -292,23 +313,27 @@ export function HeroSection() {
           />
         </motion.div>
 
-        <div className="mt-20 mb-20">
+        <div className="mt-20 mb-20 relative">
           <motion.p
-            className="text-sm font-medium text-gray-400 mb-8"
+            className="text-sm font-medium text-white mb-8"
             variants={itemVariants}
           >
             TRUSTED BY +25,000 BUSINESSES
           </motion.p>
 
+          {/* Add blur gradients */}
+          <div className="absolute left-0 top-1/2 w-32 h-full bg-gradient-to-r from-[#0e1622] to-transparent -translate-y-1/2 z-10" />
+          <div className="absolute right-0 top-1/2 w-32 h-full bg-gradient-to-l from-[#0e1622] to-transparent -translate-y-1/2 z-10" />
+
           <motion.div
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center"
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center overflow-hidden"
             variants={logoContainerVariants}
           >
             {companylogo.map((e, i) => (
               <motion.img
                 key={i}
                 src={e.image}
-                className="object-cover w-full max-w-[9rem] mx-auto"
+                className="object-contain w-[150px] h-[50px] mx-auto brightness-0 invert opacity-70"
                 variants={logoVariants}
                 whileHover={{
                   scale: 1.1,

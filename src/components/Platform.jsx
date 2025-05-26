@@ -11,22 +11,19 @@ const Platform = () => {
         {/* Header section */}
 
         <div className="text-center space-y-6 mb-16 bg-gradient-to-tr">
-          <span className="bg-gradient-to-r  from-[#F3F9FF] via-[#F0E5C4] to-[#F4B896] text-[#423200] px-4 py-1.5 rounded-full text-sm font-medium">
+          <span className="bg-gradient-to-r  from-[#F3F9FF] via-[#F0E5C4] to-[#F4B896] text-[#423200] inline-block   px-8 py-2.5 rounded-[2rem] text-[1rem] font-medium tracking-wide">
             Messenger and Omnichannel
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white max-w-3xl mx-auto">
-            Deliver conversational support where it works best for your
-            customers
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-normal text-white max-w-5xl mx-auto">
+            A single, powerful, easy-to-use platform
           </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Reduce support volumes and increase customer satisfaction in minutes
-            with Intercom s AI-powered chatbots and automation tools.
+          <p className="text-white text-lg max-w-3xl mx-auto">
+            Get all your automation, conversations, tickets, customer data, and
+            reporting working together seamlessly. Maximize team performance by
+            connecting all your other tools to our platform.
           </p>
-          <Button
-            variant="link"
-            className="text-blue-600 hover:text-blue-700 group"
-          >
-            Learn more about automation
+          <Button variant="link" className="text-white hover:text-white group">
+            Learn more about the Intercom Platform
             {/* <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" /> */}
           </Button>
         </div>
@@ -44,30 +41,29 @@ const Platform = () => {
         </div>
 
         {/* Features */}
-        <div className="grid md:grid-cols-3 gap-1 max-w-6xl ">
-          <div className=" flex justify-start items-start text-start  min-w-[15rem]">
-            <div className="w-12 h-12  mr-4 ">
-              <img src={browncheck} />
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl">
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 w-6 h-6">
+              <img src={browncheck} alt="Check" className="w-full h-full" />
             </div>
-            <h3 className="font-normal text-white ">
-              Deliver support at the exact right moment
+            <h3 className="font-normal text-white text-lg">
+              Maximize team performance with actionable insights
             </h3>
           </div>
-          <div className="flex justify-start items-start text-start  min-w-[15rem]">
-            <div className="w-10 h-10  mr-4 ">
-              <img src={browncheck} />
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 w-6 h-6">
+              <img src={browncheck} alt="Check" className="w-full h-full" />
             </div>
-            <h3 className="font-normal text-white  ">
-              Give your customers more flexibility and control over support
-              channels
+            <h3 className="font-normal text-white text-lg">
+              Stop switching between tools and speed up workflows
             </h3>
           </div>
-          <div className="flex justify-start items-start text-start  min-w-[15rem]">
-            <div className="w-10 h-10  mr-4 ">
-              <img src={browncheck} />
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 w-6 h-6">
+              <img src={browncheck} alt="Check" className="w-full h-full" />
             </div>
-            <h3 className="font-normal text-white ">
-              A seamless, beautiful customer experience
+            <h3 className="font-normal text-white text-lg">
+              See all your data in one place
             </h3>
           </div>
         </div>

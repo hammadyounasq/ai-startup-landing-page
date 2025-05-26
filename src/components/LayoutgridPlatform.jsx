@@ -379,15 +379,6 @@ const AnimatedLayoutGridPlatform = () => {
               className="w-full h-auto object-contain"
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.3 }}
-              animate={{
-                y: [0, -5, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              }}
             />
           </motion.div>
         </AnimatedCard>
@@ -417,16 +408,6 @@ const AnimatedLayoutGridPlatform = () => {
               className="w-full h-[20rem] object-fill"
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.3 }}
-              animate={{
-                y: [0, -5, 0],
-              }}
-              transition={{
-                duration: 4,
-                delay: 0.5,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              }}
             />
           </motion.div>
         </AnimatedCard>

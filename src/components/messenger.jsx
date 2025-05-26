@@ -182,7 +182,7 @@ const AnimatedMessenger = () => {
           variants={staggerContainer}
         >
           <motion.span
-            className="inline-block bg-[#EC926C] text-[#423200] px-4 py-1.5 rounded-full text-sm font-medium"
+            className="inline-block bg-gradient-to-r from-[#F9E0D6] via-[#F4C1AC] to-[#ED946E] text-[#423200] px-8 py-2.5 rounded-[2rem] text-[1rem] font-medium tracking-wide"
             variants={scaleIn}
             whileHover={{
               scale: 1.05,
@@ -193,7 +193,7 @@ const AnimatedMessenger = () => {
           </motion.span>
 
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 max-w-3xl mx-auto"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-gray-900 max-w-4xl mx-auto"
             variants={fadeInUp}
           >
             Deliver conversational support where it works best for your
@@ -201,7 +201,7 @@ const AnimatedMessenger = () => {
           </motion.h1>
 
           <motion.p
-            className="text-gray-600 text-lg max-w-2xl mx-auto"
+            className="text-gray-600 text-lg max-w-3xl mx-auto"
             variants={fadeInUp}
           >
             Reduce support volumes and increase customer satisfaction in minutes
@@ -213,30 +213,21 @@ const AnimatedMessenger = () => {
               variant="link"
               className="text-blue-600 hover:text-blue-700 group"
             >
-              Learn more about automation
+              Learn more about Messenger and Omnichannel
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
         </motion.div>
 
         {/* Main image with simple fade-in animation */}
-        <motion.div
-          ref={imageRef}
-          className="relative w-full max-w-7xl mb-[5rem] sm:mb-[7rem] lg:mb-[10rem]"
-          initial={{ opacity: 0 }}
-          animate={imageInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{
-            duration: 1.2,
-            ease: "easeInOut",
-          }}
-          exit={{ opacity: 0 }}
-        >
+        {/* Main image with simple fade-in animation */}
+        <div className="relative w-full mb-[5rem] sm:mb-[7rem] lg:mb-[10rem] overflow-hidden  rounded-lg">
           <img
             src={m1 || "/placeholder.svg"}
             alt="Intercom Dashboard"
-            className="w-full h-auto rounded-lg border border-gray-100 shadow-2xl shadow-orange-100"
+            className="w-full h-auto rounded-lg shadow-2xl shadow-orange-100 object-contain"
           />
-        </motion.div>
+        </div>
 
         {/* Features section */}
         <motion.div

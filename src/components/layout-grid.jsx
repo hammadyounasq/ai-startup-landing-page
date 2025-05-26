@@ -295,12 +295,12 @@ export default function AnimatedLayoutGrid() {
   });
 
   return (
-    <div className="relative mx-auto p-4 md:p-6 lg:p-8">
+    <div className="relative mx-auto p-4 md:p-6 lg:p-8 overflow-x-hidden">
       {/* Animated gradient background */}
       <motion.div
-        className="absolute z-[0] w-full h-[10rem] top-[10%] left-[0%] bottom-20 blur-[3rem] bg-[#CCF0F7] bg-opacity-100"
+        className="absolute z-[0] w-full h-[15rem] top-[6%] left-[0%] bottom-20 blur-[3rem] bg-[#CCF0F7] bg-opacity-80"
         animate={{
-          scale: [1, 1.05, 1],
+          scale: [1, 1.02, 1], // Reduced scale animation
           opacity: [0.8, 1, 0.8],
         }}
         transition={{
@@ -320,19 +320,20 @@ export default function AnimatedLayoutGrid() {
           variants={staggerContainer}
         >
           <motion.span
-            className="inline-block bg-gradient-to-r from-[#C4EEF7] via-[#BAEBF5] to-[#8ADDED] text-[#093E48] px-4 py-1.5 rounded-full text-sm font-medium"
+            className="inline-block bg-gradient-to-r from-[#C4EEF7] via-[#BAEBF5] to-[#8ADDED] text-[#093E48] px-8 py-2.5 rounded-[2rem] text-[1rem] font-medium tracking-wide"
             variants={scaleIn}
           >
-            Inbox
+            INBOX
           </motion.span>
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 max-w-3xl mx-auto"
+            className="text-4xl md:text-5xl lg:text-7xl font-normal text-gray-900 max-w-5xl mx-auto"
             variants={fadeInUp}
           >
-            Maximize team productivity with the world's fastest shared Inbox
+            Maximize team productivity with the world's fastest shared <br />
+            Inbox
           </motion.h1>
           <motion.p
-            className="text-gray-600 text-lg max-w-2xl mx-auto"
+            className="text-gray-600 text-lg max-w-4xl mx-auto"
             variants={fadeInUp}
           >
             Our AI-enhanced Inbox is lightning fast, easy-to-use, and optimized
@@ -343,7 +344,7 @@ export default function AnimatedLayoutGrid() {
               variant="link"
               className="text-blue-600 hover:text-blue-700 group"
             >
-              Learn more about automation
+              Learn more about our Inbox
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
